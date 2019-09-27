@@ -1,9 +1,7 @@
 <template>
     <div class="container">
         <form @submit.prevent="addGradebook" class="addGradebookForm">
-            <h3>
-                Add Gradebook
-            </h3>
+            <h3>Add Gradebook</h3>
             <input 
                 type="text" 
                 name="name" 
@@ -67,7 +65,7 @@ export default {
                 .then( response => {
                     this.newGradebook = this.getDefaults();
                     this.$router.push({ name: "gradebooks" });
-                    })
+                })
                 .catch(error => {
                         alert('Error with adding gradebook!');
                 });
@@ -95,10 +93,6 @@ export default {
     margin-top:1rem;
 }
 
-/* form input, form button {
-    margin-bottom:0.5rem;
-} */
-
 form button {
     margin-right: 1rem;
 }
@@ -116,7 +110,6 @@ select:invalid {
     display: flex;
     justify-content: center;
 }
-
 </style>
 
 

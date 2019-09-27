@@ -1,9 +1,7 @@
 <template>
     <div class="container">
         <div class="pageHeader">
-            <h2>
-                Professors
-            </h2>
+            <h2>Professors</h2>
             <ProfessorSearch @searchTermUpdated="setSearchTerm" />
         </div>
         <hr>
@@ -15,12 +13,7 @@
                 <br />
                 <div class="professorsImages">
                     <div v-for="image in professor.images" :key="image.id"  >
-                        <div class="click-zoom">
-                            <label>
-                                <input type="checkbox">
-                                <img :src="image.image" alt="Professor image" >
-                            </label>
-                        </div>
+                        <ZoomImage imageWidth="200" imageHeight="auto" :src="image.image" alt="Professor image" class="thumbnailImage" />
                     </div>
                 </div>
                 <br />
@@ -30,7 +23,6 @@
                 <div v-else>
                     <p>This professor is avilable</p>
                 </div>
-                <!-- <hr> -->
             </li>
         </ul>
     </div>
@@ -39,9 +31,11 @@
 <script>
 import { professorsService } from '../services/ProfessorsService'
 import ProfessorSearch from './Search'
+import ZoomImage from './ZoomImage';
 export default {
     components: {
-        ProfessorSearch
+        ProfessorSearch,
+        ZoomImage
     },
 
     data() {
@@ -51,14 +45,26 @@ export default {
         }
     },
 
-    created() {
-        professorsService.getAll()
-            .then(response => {
-                this.professors = response.data
+    // created() {
+    //     professorsService.getAll()
+    //         .then(response => {
+    //             this.professors = response.data
+    //         })
+    //         .catch(error => {
+    //             alert('Error with getting professors!');
+    //         });
+    // },
+
+    beforeRouteEnter (to, from, next) {
+        next(vm => {
+            professorsService.getAll()
+            .then(response => { 
+                vm.professors = response.data 
             })
-            .catch(error => {
-                alert('Error with getting professors!');
+            .catch(error => { 
+                alert('Error with getting professors!')
             });
+        })
     },
 
     methods: {
@@ -69,10 +75,6 @@ export default {
         singleProfessor(id) {
             return  `teachers/${id}`;
         }, 
-
-        // zoomImage() {
-        //     console.log('test')
-        // }
     },
 
     computed: {
@@ -107,7 +109,6 @@ h2 {
 .pageHeader {
     width: 100%;
     display: flex;
-    flex-wrap:wrap;
     justify-content: space-between;
     align-content: center;
 }
@@ -123,39 +124,16 @@ h2 {
     justify-content: flex-start;
 }
 
-.click-zoom {
-    width: 25%;
+.professorsImages div {
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
-img {
-    /* margin:0.5rem;
+.professorsImages div img {
     height: 100px;
-    width: 25%; */
-    border-radius: 0.5rem;
-    width: 100%;
-    /* display: inline-block; */
+    width: auto;
+    border-radius: 0.5rem; 
+    alt: "Professor's image";
 }
-
-img:hover {
-    opacity: 0.5;
-    filter: alpha(opacity=40);
-}  
-
-.click-zoom input[type=checkbox] {
-  display: none;
-}
-
-.click-zoom img {
-  transition: transform 0.25s ease;
-  cursor: zoom-in;
-}
-
-.click-zoom input[type=checkbox]:checked~img {
-  transform: scale(2);
-  cursor: zoom-out;
-  opacity: 1;
-}
-
-
 
 </style>

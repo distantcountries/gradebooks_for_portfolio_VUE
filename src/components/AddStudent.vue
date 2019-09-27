@@ -2,9 +2,7 @@
     <div class="container">
         <form @submit.prevent="addStudent()" class="addProfessorForm">
             <div class="titleAndButton">
-                <h3>
-                    Add student
-                </h3>
+                <h3>Add student</h3>
                 <!-- <button type="button" class="btn btn-warning" @click="callFormAgain">Add more students</button> -->
                 <hr>
             </div>
@@ -32,7 +30,8 @@
                         v-model="newStudent.image"
                         type="text" 
                         accept=".png, .jpg, .jpeg" 
-                        class="form-control" />
+                        class="form-control" 
+                    />
                 </div>
             </div>
             <div id="submitStudent">

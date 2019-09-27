@@ -124,5 +124,4 @@ export default {
 form input, form button, #checkboxHelp {
     margin-bottom:0.5rem;
 }
-
 </style>

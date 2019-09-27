@@ -31,17 +31,17 @@
                 </option>
             </select> 
             <button v-if="!imageInput" @click="showImageInput" class="btn btn-secondary"  >Add Image</button>
-                <div v-if="imageInput" class="imageElements">
-                    <input 
-                        v-model="newProfessor.image"
-                        type="text" 
-                        class="form-control"
-                        placeholder="Image"
-                        style="width:70%"
+            <div v-if="imageInput" class="imageElements">
+                <input 
+                    v-model="newProfessor.image"
+                    type="text" 
+                    class="form-control"
+                    placeholder="Image"
+                    style="width:70%"
                          
-                    />
-                    <button type="button" class="btn btn-light"  @click="removeImage" >Remove image</button>
-                </div>
+                />
+                <button type="button" class="btn btn-light"  @click="removeImage" >Remove image</button>
+            </div>
             <hr>
             <div id="addProfessorsButtons">
                 <button type="submit" class="btn btn-info">Submit</button>
@@ -115,8 +115,7 @@ export default {
     computed: {
         availableGradebooks() {
             return this.gradebooks.filter(gradebook => 
-                gradebook.user_id === null
-            )
+                gradebook.user_id === null)
         }
     }
 }

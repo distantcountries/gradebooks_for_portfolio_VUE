@@ -1,10 +1,10 @@
 <template>
     <div class="container">
-        <h2 class="pageHeader">
-            {{ gradebook.name }}
-        </h2>
-        <hr>
-        <button class="btn btn-danger deleteButton" @click="deleteGradebook">Delete gradebook</button>
+        <div class="pageHeader">
+            <h3>{{ gradebook.name }}</h3>
+            <button class="btn btn-danger deleteButton" @click="deleteGradebook">Delete gradebook</button>
+        </div>
+        <hr />
         <div v-if="gradebook && gradebook.user">
             <span class="boldText">Professor:</span>
             <router-link :to="singleProfessor(gradebook.user.id)" style="color:#eebd30; font-size:1.2rem;"> {{gradebook.user.firstName}} {{gradebook.user.lastName}}</router-link>
@@ -23,16 +23,16 @@
                 </li>
             </div>
         </ul>
-        <button type="button" class="btn btn-warning" @click="addStudent">Add student</button><br><br>
+        <button type="button" class="btn btn-warning" @click="addStudent">Add student</button><br />
         <h5 style="text-align:center; font-weight:bold;">Comments:</h5>
         <hr>
         <div v-if="comments">
             <li v-for="(comment, index) in comments" :key="index" class="commentsList">
                 {{ comment.content }}
-                <br>
+                <br />
                 <span style="font-style:italic;color:#727272;">
                     Posted by: 
-                    {{ comment.user.firstName }} {{ comment.user.lastName }}, 
+                    <router-link :to="singleProfessor(comment.user.id)">{{ comment.user.firstName }} {{ comment.user.lastName }}</router-link>, 
                     {{ comment.created_at }}
                     <hr>
                 </span>
@@ -169,6 +169,7 @@ h2 {
     flex-wrap:wrap;
     justify-content: space-between;
     align-content: center;
+    margin-bottom: 0.5rem;
 }
 
 .deleteButton {
@@ -187,6 +188,17 @@ h2 {
     margin-bottom: 1rem;
 }
 
+.commentsList a {
+    color:black;
+    text-decoration: underline;
+}
+
+.commentsList a:hover {
+    color:black;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
 .addCommentForm {
     width: 100%;
 }
@@ -196,5 +208,4 @@ h2 {
     flex-wrap: wrap;
     justify-content: center;
 }
-
 </style>

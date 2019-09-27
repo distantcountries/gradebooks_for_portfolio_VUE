@@ -16,14 +16,14 @@
                         {{ gradebook.name }}
                     </router-link>
                 </span>
-                <br>
+                <br/>
                 <span class="linkElement" v-if="gradebook.user_id===null" style="color:#727272;">
                     This gradebook still doesn't have a professor
                 </span>
                 <span class="linkElement" v-else>
                     <router-link :to="mainProfessor(gradebook.user.id)">Professor {{ gradebook.user.firstName }} {{ gradebook.user.lastName }}</router-link>
                 </span>
-                <br>
+                <br />
                 <span class="timeElement">Created at: {{ gradebook.created_at }}</span>
             </li>
             <li v-if="gradebooks.length === 0">
@@ -186,7 +186,5 @@ h2 {
     box-shadow: 0 3px 2px -2px grey;
     background: linear-gradient(to right, rgba(255,0,0,0), #fdf8e7, rgba(255,0,0,0));
 }
-
-
 </style>
 

@@ -2,8 +2,10 @@
   <div id="app">
     <nav class="navbar navbar-dark bg-light" style="color:white; padding:1rem 3rem 1rem 3rem;" id="navigation">
       <div class="nav_logo">
-        <img alt="Gradebook" src="./assets/book.png">
-        <router-link to="/" style="color:#38a2b8; text-decoration:none"><span id="logoText">Online Gradebook</span></router-link>
+        <router-link to="/" style="color:#38a2b8; text-decoration:none">
+          <img alt="Gradebook" src="./assets/book.png">
+          <span id="logoText">Online Gradebook</span>
+        </router-link>
       </div>
       <div v-if="!isAuthenticated" class="nav_not_authenticated">
         <div class="nav_element">
@@ -76,23 +78,38 @@
     </nav>
     <router-view/>
     <div class="container"></div>
-    <footer>
-      <!-- <div>
-        <h5>School</h5>
-        <a>About us</a>
-        <a></a>
-
-      </div> -->
-      <div id="go_to_top">
-        <a href="#navigation"><img alt="go_top" src="./assets/top_arrow.png">
-          <span>Move to top</span>
-        </a>
+    <footer style="display:flex">
+      <div class="social_media_icons">
+        <h5>Online gradebook</h5>
+        <div>
+          <a href="#"><img alt="Skype" src="./assets/skype.png"></a>
+          <a href="#"><img alt="Facebook" src="./assets/facebook.png"></a>
+          <a href="#"><img alt="Linkedin" src="./assets/linkedin.png"></a>
+          <a href="#"><img alt="Tweeter" src="./assets/tweeter.png"></a>
+        </div>
       </div>
-
-      <p>
-        Copyright 2015-2019 <br />
-        All rights reserved.
-      </p>
+      <div class="footer_segment">
+        <p>
+          Smetanina 12<br />
+          11040 Belgrade<br />
+          Serbia<br />
+          +38163 12 34 567
+        </p>
+      </div>
+      <div class="footer_segment_top_button">
+        <div id="go_to_top">
+          <a href="#navigation">
+            <img alt="go_top" src="./assets/top_arrow.png">
+            <span>Move to top</span>
+          </a> 
+        </div>
+      </div>
+      <div class="footer_copyright">
+        <p>
+          Copyright 2015-2019 <br />
+          All rights reserved.
+        </p>
+      </div>
     </footer>
   </div>
 </template>
@@ -136,6 +153,8 @@ html {
   scroll-behavior: smooth;
 }
 
+
+/* ---------------------navigation--------------------- */
 nav {
   width: 100%;
   box-shadow: 0 3px 2px -2px lightgrey;
@@ -146,6 +165,19 @@ nav {
 
 nav .nav_logo {
   width: 25%;
+}
+
+.nav_logo img {
+    margin:0.5rem;
+    height: 100px;
+    width: auto;
+    border-radius: 0.5rem;
+    display: inline-block;
+}
+
+.nav_logo:hover {
+    opacity: 0.5;
+    filter: alpha(opacity=40);
 }
 
 .nav_not_authenticated {
@@ -164,10 +196,9 @@ nav .nav_logo {
 
 nav a {
   color: #38a2b8;
-  /* width: 50%; */
 }
 
-nav a:hover {
+.nav_not_authenticated a:hover, .nav_authenticated a:hover {
   text-decoration: none;
   color: #38a2b8;
   opacity:0.7;
@@ -203,18 +234,10 @@ nav a:hover {
   text-align: center;
 }
 
-.nav_element:hover {
+/* .nav_element:hover {
   opacity: 0.7;
   cursor: pointer;
-}
-
-
-.container {
-  min-height: 320px;
-  width:100%;
-}
-
-
+} */
 
 #logoText {
   color:#ef5656;
@@ -222,44 +245,64 @@ nav a:hover {
   font-weight: bold;
 }
 
-#logoText:hover {
-  color:#ffabab;
+.container {
+  min-height: 320px;
+  width:100%;
 }
 
-img {
-  width: 10%;
-  height: 10%;
-}
-
-.betweenLinks {
-  color: #38a2b8;
-}
+/* ---------------------footer--------------------- */
 
 footer {
-  padding: 1rem;
+  margin:0 auto;
+  padding: 2rem 25rem;
   width: 100%;
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
   background-color: #38a2b8;
   box-shadow: 0px -2px 2px 0px grey;
+}
+
+.footer_segment, .social_media_icons, .footer_segment_top_button {
+  width: 20%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.social_media_icons {
+  display: flex;
+  flex-direction: column;
+}
+
+.social_media_icons div {
+  width:100%;
+}
+
+.social_media_icons div img {
+  width:20%;
+} 
+
+.social_media_icons a:hover {
+  opacity:0.5;
 }
 
 footer p {
   text-align: center;
   width: 100%;
-  color:white;
-}
+} 
 
+.footer_segment p {
+  font-weight: bold;
+}
 
 #go_to_top {
   width: 50px;
   height: 50px;
-  /* background-color: grey; */
   display: flex;
   justify-content: center;
   align-items: center;
-  /* border-radius: 0.2rem; */
 }
 
 #go_to_top a {
@@ -267,12 +310,10 @@ footer p {
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} 
 
-footer img {
-  width:100%;
-  height: auto;
-  opacity:0.5;
+#go_to_top img {
+  width: 100%;
 }
 
 #go_to_top img:hover {
@@ -301,6 +342,13 @@ footer img {
 
 #go_to_top a:hover span{
   visibility:visible;
-} 
+}  
+
+.footer_copyright {
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid black;
+  width: 100%;
+}
 
 </style>

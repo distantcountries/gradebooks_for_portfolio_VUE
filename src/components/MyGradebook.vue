@@ -2,13 +2,11 @@
     <div class="container">
         <div class="pageHeader">
             <h3>{{professor.firstName}} {{professor.lastName}}</h3>
-            <hr>
+            <button class="btn btn-danger" @click="deleteGradebook" >Delete gradebook</button>
         </div>
-        <hr>
+        <hr />
         <div v-if=" professor.gradebook">
-            Gradebook:<span class="professorName">{{ professor.gradebook.name }}</span><br>
-            <button class="btn btn-danger" @click="deleteGradebook" style="margin-right:0.5rem;">Delete gradebook</button>
-            <button type="button" class="btn btn-warning" @click="addStudent">Add student</button><br><br>
+            <span class="boldText">Gradebook: </span>{{ professor.gradebook.name }}<br />
             <span class="boldText">Students:</span>
             <ul>
                 <div v-if="students">
@@ -20,6 +18,7 @@
                     </li>
                 </div>
             </ul>
+            <button type="button" class="btn btn-warning" @click="addStudent">Add student</button><br /><br />
         </div>
         <div v-else>
             You dont' have a gradebook

@@ -15,7 +15,6 @@ export default class StudentsService {
 
     add(newStudent) {
         return axios.post('students/', newStudent)
-            // return axios.post('students/', { student: newStudent, gradebook_id: id })
     }
 }
 

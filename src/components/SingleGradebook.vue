@@ -96,7 +96,7 @@ export default {
 
     methods: {
         addStudent() {
-            this.$router.push({ name: "add-student" });
+            this.$router.push({name: "add-student"})
         },
 
         singleProfessor(id) {

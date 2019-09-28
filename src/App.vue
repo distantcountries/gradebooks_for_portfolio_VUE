@@ -80,7 +80,7 @@
     <div class="container"></div>
     <footer style="display:flex">
       <div class="social_media_icons">
-        <h5>Online gradebook</h5>
+        <h5 style="font-weight:bold;">Online gradebook</h5>
         <div>
           <a href="#"><img alt="Skype" src="./assets/skype.png"></a>
           <a href="#"><img alt="Facebook" src="./assets/facebook.png"></a>
@@ -201,7 +201,7 @@ nav a {
 .nav_not_authenticated a:hover, .nav_authenticated a:hover {
   text-decoration: none;
   color: #38a2b8;
-  opacity:0.7;
+  opacity:0.5;
 }
 
 .nav_authenticated .nav_element {

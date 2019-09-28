@@ -24,12 +24,13 @@
                     required
                 />
                 <div class="add_image">
-                    <button @click="showImageInput = true" class="btn btn-secondary" >Add Image</button>
+                    <button @click.prevent="showImageInput = true" class="btn btn-secondary" >Add Image</button>
                     <input 
+                        type="text" 
+                        name="image" 
+                        placeholder="Image link..."
                         v-if="showImageInput" 
                         v-model="newStudent.image"
-                        type="text" 
-                        accept=".png, .jpg, .jpeg" 
                         class="form-control" 
                     />
                 </div>
@@ -43,6 +44,7 @@
 
 <script>
 import { studentsService } from '../services/StudentsService'
+import { gardebooksService } from '../services/GardebooksService'
 import MyGradebook from './MyGradebook'
 export default {
     components: {
@@ -55,7 +57,7 @@ export default {
                 lastName:'',
                 image:'',
             },
-            gradebookId:'',
+            // gradebookId:'',
             showImageInput: false, 
             forms:[1], 
             counter:'',
@@ -76,11 +78,12 @@ export default {
             }
         },
 
-        addStudent(gradebookId) {
-            this.gradebookId=gradebookId
+        addStudent() {
+            this.newStudent.gradebook_id = this.$router.currentRoute.params.id;
             studentsService.add(this.newStudent)
                 .then(response => {
                     this.newStudent = this.getDefaults();
+                    this.$router.back();
                 })
                 .catch(error => {
                     alert('Error with adding student!');

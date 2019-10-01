@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="pageHeader">
+        <div class="pageHeaderAllProfessors">
             <h2>Professors</h2>
             <ProfessorSearch @searchTermUpdated="setSearchTerm" />
         </div>
@@ -16,9 +16,14 @@
                         <ZoomImage imageWidth="200" imageHeight="auto" :src="image.image" alt="Professor image" class="thumbnailImage" />
                     </div>
                 </div>
-                <br />
+                <!-- <br /> -->
                 <div v-if="professor && professor.gradebook">
-                    {{ professor.gradebook.name }}
+                    <span>Gradebook: </span>
+                    <span class="professorsGradebook">
+                        <router-link :to="singleGardebook(professor.gradebook.id)">
+                            {{ professor.gradebook.name }}
+                        </router-link>
+                    </span>
                 </div>
                 <div v-else>
                     <p>This professor is avilable</p>
@@ -75,6 +80,10 @@ export default {
         singleProfessor(id) {
             return  `teachers/${id}`;
         }, 
+
+        singleGardebook(id) {
+            return  `gradebooks/${id}`;
+        },
     },
 
     computed: {
@@ -90,6 +99,8 @@ export default {
 <style>
 .professorsList{
     border-bottom: 1px solid lightgray;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
 }
 
 .professorName a {
@@ -97,8 +108,13 @@ export default {
     color: #eebd30;
 }
 
-.professorName a:hover {
-    color: #494949;
+.professorsGradebook a {
+    color:#494949;
+    font-weight: bold;
+}
+
+.professorsGradebook a:hover, .professorName a:hover  {
+    color:#9F9F9F;
     text-decoration: none;
 }
 
@@ -106,13 +122,13 @@ h2 {
     width:70%;
 }
 
-.pageHeader {
+.pageHeaderAllProfessors {
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-content: center;
 }
-
+ 
 .container {
     padding: 3rem;
 }
@@ -135,5 +151,4 @@ h2 {
     border-radius: 0.5rem; 
     alt: "Professor's image";
 }
-
 </style>

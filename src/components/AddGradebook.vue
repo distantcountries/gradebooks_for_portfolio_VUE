@@ -88,7 +88,7 @@ export default {
 
 <style>
 .addGradebookForm {
-    width:50%;
+    width:70%;
     margin: 0 auto;
     margin-top:1rem;
 }
@@ -109,6 +109,23 @@ select:invalid {
     width: 100%;
     display: flex;
     justify-content: center;
+}
+
+/* ---------------------responsive--------------------- */
+@media (max-width: 992px) {
+    .addGradebookForm {
+        width:100%;
+        padding: 0;
+    }
+
+    .addGradebookForm .formButtons {
+        justify-content: space-between;
+    }
+
+    .addGradebookForm .formButtons button {
+        width: 48%;
+        margin:0;
+    }
 }
 </style>
 

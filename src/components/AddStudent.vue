@@ -97,6 +97,10 @@ export default {
 </script>
 
 <style>
+.addProfessorForm {
+    width: 70%;
+}
+
 .titleAndButton {
     display: flex;
     flex-wrap: wrap;
@@ -127,5 +131,23 @@ export default {
 
 .add_image input {
     width: 75%;
+}
+
+/* ---------------------responsive--------------------- */
+@media (max-width: 992px) {
+    .addProfessorForm {
+        width:100%;
+    }
+
+    #submitStudent button {
+        width: 100%;
+        margin:0;
+    }
+}
+
+@media (max-width: 480px) and (min-width:300px) {
+    .add_image button {
+        line-height: 90%;
+    }
 }
 </style>

@@ -1,8 +1,8 @@
 <template>
     <div class="container">
-        <div class="pageHeader">
+        <div class="pageHeaderGradebooks">
             <h2>Gradebooks</h2>
-            <GradebookSearch @searchTermUpdated="setSearchTerm" />
+            <GradebookSearch @searchTermUpdated="setSearchTerm" class="searchEvent" />
         </div>
         <hr>
         <div class="sortButtons">
@@ -30,7 +30,7 @@
                 There is no created gradebooks
             </li>
         </ul>
-        <div v-if="gradebooks.length/10>counter && gradebooks.length>0 " style="padding-left:50%;">
+        <div v-if="gradebooks.length/10>counter && gradebooks.length>0" class="loadMoreButton">
             <button @click="encreaseShownGradebooks" type="button" class="btn btn-warning">Load more</button>
         </div>
     </div>
@@ -139,7 +139,7 @@ export default {
     margin-top: 0.5rem;
 }
 
-.linkTittle a {
+.gradebooksList .linkTittle a  {
     font-size: 1.5rem;
     color: #eebd30;
     font-weight: bold;
@@ -161,16 +161,16 @@ export default {
     font-style: italic;
 }
 
-h2 {
-    width:70%;
-}
-
-.pageHeader {
+.pageHeaderGradebooks {
     width: 100%;
     display: flex;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-content: center;
+}
+
+.pageHeaderGradebooks h2 {
+    width:60%;
 }
 
 .container {
@@ -185,6 +185,53 @@ h2 {
 .gradebooksList li:hover {
     box-shadow: 0 3px 2px -2px grey;
     background: linear-gradient(to right, rgba(255,0,0,0), #fdf8e7, rgba(255,0,0,0));
+}
+
+.loadMoreButton {
+    display:flex;
+    justify-content: center;
+}
+
+/* ---------------------responsive--------------------- */
+@media (max-width: 480px) and (min-width:300px) {
+    .gradebooksList {
+        padding: 0 0.7rem;
+    }
+
+    .gradebooksList li {
+        padding: 0 0 0.5rem 0;
+    }
+
+    .gradebooksList .linkTittle a {
+        font-size: 1.3rem;
+    }
+
+    .gradebooksList .linkElement a {
+        font-size: 1.1rem;
+    }
+
+    .gradebooksList .timeElement {
+        font-size: 0.8rem;
+    }
+
+    .loadMoreButton {
+        display: flex;
+        justify-content: center;
+        padding: 0;
+    }
+
+    .sortButtons {
+        margin:0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 0.5rem;
+    }
+
+    .sortButtons button {
+        width: 45%;
+        padding: 0.2rem;
+    }
 }
 </style>
 

@@ -110,7 +110,7 @@ export default {
 
 <style>
 .registerForm {
-    width:50%;
+    width:70%;
     margin: 0 auto;
     margin-top:1rem;
 }
@@ -123,5 +123,24 @@ export default {
 
 form input, form button, #checkboxHelp {
     margin-bottom:0.5rem;
+}
+
+/* ---------------------responsive--------------------- */
+@media (max-width: 992px)  {
+    .registerForm {
+        width:100%;
+        padding: 0 2rem;
+    }
+
+    .registerForm .registerFormButton button {
+        width: 100%;
+        margin:0;
+    }
+}
+
+@media (max-width: 480px) and (min-width:300px) {
+    .registerForm {
+        padding: 0;
+    }
 }
 </style>

@@ -1,8 +1,8 @@
 <template>
     <div class="container">
-        <div class="pageHeader">
+        <div class="pageHeaderMyGradebook">
             <h3>{{professor.firstName}} {{professor.lastName}}</h3>
-            <button class="btn btn-danger" @click="deleteGradebook" >Delete gradebook</button>
+            <button class="btn btn-danger" @click="deleteGradebook" id="deleteMyGradebook" >Delete gradebook</button>
         </div>
         <hr />
         <div v-if=" professor.gradebook">
@@ -18,7 +18,7 @@
                     </li>
                 </div>
             </ul>
-            <button type="button" class="btn btn-warning" @click="addStudent">Add student</button><br /><br />
+            <button type="button" class="btn btn-warning" @click="addStudent" id="addStudentToMyGradebook">Add student</button><br /><br />
         </div>
         <div v-else>
             You dont' have a gradebook
@@ -74,5 +74,19 @@ export default {
 </script>
 
 <style>
+.pageHeaderMyGradebook {
+    width: 100%;
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: space-between;
+    align-content: center;
+    margin-bottom: 0.5rem;
+}
 
+/* ---------------------responsive--------------------- */
+@media (max-width: 480px) and (min-width:300px) {
+    #deleteMyGradebook, #addStudentToMyGradebook {
+        width:100%;
+    }
+}
 </style>

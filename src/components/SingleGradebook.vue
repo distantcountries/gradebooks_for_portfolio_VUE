@@ -1,8 +1,8 @@
 <template>
     <div class="container">
-        <div class="pageHeader">
+        <div class="pageHeaderSingleGradebook">
             <h3>{{ gradebook.name }}</h3>
-            <button class="btn btn-danger deleteButton" @click="deleteGradebook">Delete gradebook</button>
+            <button class="btn btn-danger" @click="deleteGradebook" id="deleteGradebookButton">Delete gradebook</button>
         </div>
         <hr />
         <div v-if="gradebook && gradebook.user">
@@ -23,7 +23,7 @@
                 </li>
             </div>
         </ul>
-        <button type="button" class="btn btn-warning" @click="addStudent">Add student</button><br />
+        <button type="button" class="btn btn-warning" @click="addStudent" id="addStudentToGradebook">Add student</button><br />
         <h5 style="text-align:center; font-weight:bold;">Comments:</h5>
         <hr>
         <div v-if="comments">
@@ -163,7 +163,7 @@ h2 {
     width:70%;
 }
 
-.pageHeader {
+.pageHeaderSingleGradebook {
     width: 100%;
     display: flex;
     flex-wrap:wrap;
@@ -172,7 +172,7 @@ h2 {
     margin-bottom: 0.5rem;
 }
 
-.deleteButton {
+#deleteGradebookButton {
     margin-top: 1rem;
 }
 
@@ -207,5 +207,16 @@ h2 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+/* ---------------------responsive--------------------- */
+@media (max-width: 480px) and (min-width:300px) {
+    #deleteGradebookButton, #addStudentToGradebook {
+        width:100%;
+    }
+
+    #addStudentToGradebook {
+        margin-bottom: 1rem;
+    }
 }
 </style>

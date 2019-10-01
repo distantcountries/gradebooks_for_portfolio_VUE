@@ -60,7 +60,7 @@ export default {
 
 <style>
 .loginForm {
-    width:50%;
+    width:70%;
     margin: 0 auto;
     margin-top:1rem;
 }
@@ -73,6 +73,25 @@ export default {
 
 form input, form button {
     margin-bottom:0.5rem;
+}
+
+/* ---------------------responsive--------------------- */
+@media (max-width: 992px)  {
+  .loginForm {
+        width:100%;
+        padding: 0 2rem;
+    }
+
+    .loginForm .loginFormSubmit button {
+        width: 100%;
+        margin:0;
+    }
+}
+
+@media (max-width: 480px) and (min-width:300px) {
+    .loginForm {
+        padding: 0;
+    }
 }
 </style>
 

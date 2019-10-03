@@ -8,9 +8,9 @@
                 placeholder="First name..." 
                 v-model="firstName" 
                 class="form-control" 
-                pattern=".{1,255}" 
+                pattern=".{2,255}" 
                 required 
-                title="Max 255 characters" 
+                title="Min 2, max 255 characters" 
             />
             <input 
                 type="text" 
@@ -18,9 +18,9 @@
                 placeholder="Last name..." 
                 v-model="lastName" 
                 class="form-control" 
-                pattern=".{1,255}" 
+                pattern=".{2,255}" 
                 required 
-                title="Max 255 characters" 
+                title="Min 2, max 255 characters" 
             />
             <input 
                 type="email" 
@@ -39,8 +39,8 @@
                 v-model="password" 
                 class="form-control" 
                 required 
-                pattern="(?=.*\d).{8,}" 
                 title="Min 8 characters, must include at least one digital." 
+                pattern="(?=.*\d).{8,}" 
             />
             <input 
                 type="password" 

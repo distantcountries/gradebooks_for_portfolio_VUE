@@ -237,7 +237,7 @@ nav a {
 }
 
 .nav_element_image img {
-  width:80%;
+  width:60%;
   height: auto;
 }
 
@@ -263,6 +263,29 @@ nav a {
 }
 
 /* ---------------------navigation responsive--------------------- */
+@media (min-width: 1220px) {
+  .nav_logo .nav_logo_image img {
+      width: 25%;
+  }
+
+  .nav_not_authenticated {
+    width: 30%;
+  }
+
+  .nav_authenticated {
+    width: 70%;
+  }
+
+  .nav_authenticated .nav_element {
+    width: 30%;
+  }
+
+  .nav_element_image img {
+    width:50%;
+  }
+
+}
+
 @media (max-width: 1220px) {
   .nav_wrapper {
     width: 100%;
@@ -281,7 +304,7 @@ nav a {
   }
 
   .nav_element_image img {
-    width:60%;
+    width:50%;
   }
 
   .nav_authenticated {
